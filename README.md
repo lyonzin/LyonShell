@@ -65,7 +65,7 @@ Este repositório contém um **perfil personalizado do PowerShell** para Windows
 - Exemplos de uso:
   ```powershell
   # Extrair arquivos
-  extrair .rquivo.zip
+  extrair .arquivo.zip
 
   # Buscar string em arquivos
   findstring "Erro" .\logs
