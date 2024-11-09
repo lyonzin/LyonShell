@@ -44,7 +44,7 @@ Este repositório contém um **perfil personalizado do PowerShell** para Windows
 
 ## 🛠️ Requisitos
 
-- PowerShell 7 ou superior.
+- PowerShell 5 ou superior.
 - **7-Zip** instalado para a função de extração de arquivos.
 - **Winget** para gerenciamento de pacotes.
 - Acesso à internet para algumas funções que utilizam APIs externas.
