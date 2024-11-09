@@ -84,11 +84,8 @@ Este repositório contém um **perfil personalizado do PowerShell** para Windows
 
 Este projeto está licenciado sob a licença MIT. Consulte o arquivo LICENSE para obter mais detalhes.
 
-## 📞 Contato
-
 Criado por **Lyon**. Sinta-se à vontade para entrar em contato para sugestões ou colaborações.
-- **E-mail**: lyon@example.com
-- **GitHub**: [github.com/lyon](https://github.com/lyon)
+- **GitHub**: [github.com/lyon](https://github.com/lyonzin)
 
  𝓥𝓮𝓻𝓼ã𝓸: 1.0  
  𝓑𝔂: 𝓛𝔂𝓸𝓷.
