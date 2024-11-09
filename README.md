@@ -90,5 +90,5 @@ Criado por **Lyon**. Sinta-se à vontade para entrar em contato para sugestões 
 - **E-mail**: lyon@example.com
 - **GitHub**: [github.com/lyon](https://github.com/lyon)
 
-// Versão: [Preencher Versão]  
+ 𝓥𝓮𝓻𝓼ã𝓸: 1.0  
  𝓑𝔂: 𝓛𝔂𝓸𝓷.
