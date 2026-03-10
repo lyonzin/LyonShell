@@ -1,91 +1,309 @@
+<div align="center">
 
-# PowerShell Profile - HARDWAY Custom Shell
+```
+██╗  ██╗   ██╗ ██████╗ ███╗   ██╗███████╗██╗  ██╗███████╗██╗     ██╗
+██║  ╚██╗ ██╔╝██╔═══██╗████╗  ██║██╔════╝██║  ██║██╔════╝██║     ██║
+██║   ╚████╔╝ ██║   ██║██╔██╗ ██║███████╗███████║█████╗  ██║     ██║
+██║    ╚██╔╝  ██║   ██║██║╚██╗██║╚════██║██╔══██║██╔══╝  ██║     ██║
+███████╗██║   ╚██████╔╝██║ ╚████║███████║██║  ██║███████╗███████╗███████╗
+╚══════╝╚═╝    ╚═════╝ ╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝
+```
 
-Este repositório contém um **perfil personalizado do PowerShell** para Windows, desenvolvido e ajustado para fornecer uma experiência otimizada e estilizada para desenvolvedores e profissionais de segurança. O perfil inclui diversas **funções automáticas, atalhos úteis e um design estilizado**, perfeito para aqueles que desejam elevar sua experiência no terminal.
+**A feature-rich PowerShell profile that transforms your Windows terminal.**
 
-## ✨ Características Principais
+Neofetch-style system info, security toolkit, network utilities, and a hacker-inspired prompt — all in a single drop-in file. No modules, no dependencies, just plug and play.
 
-1. **Banner Estilizado**
-   - Exibe um banner customizado com o nome **HARDWAY**, ao iniciar o PowerShell.
-   - Feito com arte ASCII para uma apresentação única e visualmente agradável.
+[![PowerShell 5.1+](https://img.shields.io/badge/PowerShell-5.1%2B-blue?logo=powershell&logoColor=white)](https://github.com/PowerShell/PowerShell)
+[![Windows](https://img.shields.io/badge/Platform-Windows%2010%2F11-0078D6?logo=windows&logoColor=white)](https://www.microsoft.com/windows)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/lyonzin/LyonShell?style=social)](https://github.com/lyonzin/LyonShell)
 
-2. **Alias e Atalhos Globais**
-   - Alias úteis para comandos comuns como `ls`, `grep`, `install/remove`, e muito mais.
-   - Facilita a navegação e execução de comandos frequentes.
+[Install](#-quick-install) | [Features](#-features) | [Commands](#-command-reference) | [Config](#%EF%B8%8F-configuration)
 
-3. **Funções para Gerenciamento de Arquivos**
-   - **extrair**: Permite descompactar diversos tipos de arquivos como `.zip`, `.rar`, `.7z`, e `.tar`.
-   - **ffind**: Busca arquivos rapidamente pelo nome, ignorando diretórios como `C:\Windows` e `OneDrive`, com barra de progresso.
+</div>
 
-4. **Codificação e Decodificação em Base64**
-   - Funções **encode_base64** e **decode_base64** com suporte a diferentes charsets (UTF-8 e UTF-16 LE).
+---
 
-5. **Gerenciamento de Pacotes com Winget**
-   - **install/remove**: Instala ou remove pacotes utilizando o **Winget**, o gerenciador de pacotes padrão do Windows.
-   - **updatefull**: Atualiza todos os pacotes instalados, incluindo limpeza e autoremove.
+## Quick Install
 
-6. **Visualização de JSON**
-   - **jsonview**: Exibe rapidamente arquivos JSON formatados e identados, facilitando a leitura e análise.
+**One-liner** (backs up your existing profile automatically):
 
-7. **Verificação de Hash e Consulta no VirusTotal**
-   - **check_hash**: Detecta o tipo de hash (MD5, SHA-1, SHA-256, SHA-512) e oferece opção para verificar o hash no **VirusTotal**.
+```powershell
+irm https://raw.githubusercontent.com/lyonzin/LyonShell/main/install.ps1 | iex
+```
 
-8. **Obter IP Público e ISP**
-   - **myip**: Exibe o IP público e consulta o ISP utilizando a API `ipinfo.io`, proporcionando informações adicionais sobre a conexão.
+**Manual:**
 
-9. **Gerar QR Code**
-   - **qrcode**: Gera QR Code a partir de uma string e permite exibir no navegador ou salvar como imagem.
+```powershell
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/lyonzin/LyonShell/main/Microsoft.PowerShell_profile.ps1" -OutFile $PROFILE
+```
 
-10. **Identificar Fabricante de MAC Address**
-    - **macfinder**: Consulta a API `macvendors.com` para identificar o fabricante a partir de um endereço MAC.
+Restart your terminal and you're done. Type `show-menu` to see all commands.
 
-11. **Menu de Funções Estilizado**
-    - **show-menu**: Exibe um menu interativo com todas as funções disponíveis, facilitando a navegação e uso das ferramentas.
+> Your existing profile is backed up as `$PROFILE.bak.<timestamp>` before overwriting.
 
-## 🛠️ Requisitos
+---
 
-- PowerShell 5 ou superior.
-- **7-Zip** instalado para a função de extração de arquivos.
-- **Winget** para gerenciamento de pacotes.
-- Acesso à internet para algumas funções que utilizam APIs externas.
+## Features
 
-## 📦 Instalação
+### Custom Prompt
 
-1. Clone o repositório ou faça o download do arquivo `profile.ps1`.
-2. Copie o arquivo para o diretório do seu perfil PowerShell:
-   ```powershell
-   cp .\profile.ps1 $PROFILE
-   ```
-3. Reinicie o PowerShell para aplicar as mudanças.
+A Kali Linux-inspired two-line prompt with live system info:
 
-## 📝 Uso
+```
+┌──[user@HOSTNAME]-[14:30:22]-[192.168.1.10]-[~/Projects]
+└──PS> _
+```
 
-- Inicie o PowerShell e o banner estilizado será exibido automaticamente.
-- Utilize o comando `show-menu` para ver todas as funções disponíveis.
-- Exemplos de uso:
-  ```powershell
-  # Extrair arquivos
-  extrair .arquivo.zip
+| Segment | What it shows |
+|---|---|
+| `user@HOST` | Username + computer name (configurable) |
+| `HH:mm:ss` | Real-time clock |
+| `192.168.x.x` | Local IP address (cached, refreshes every 60s) |
+| `~/path` | Current directory with `~` shorthand for home |
 
-  # Buscar string em arquivos
-  findstring "Erro" .\logs
+---
 
-  # Codificar em Base64
-  encode_base64 "Texto para codificar"
+### Sysinfo — Neofetch for Windows
 
-  # Obter IP público
-  myip
+Run `sysinfo` to get a full hardware and system dashboard:
 
-  # Atualizar pacotes
-  updatefull
-  ```
+```
+   user@HOSTNAME
+   ──────────────────
 
-## 📄 Licença
+   OS          Windows 11 Pro 64 bits (Build 26200 / 24H2)
+   Host        HOSTNAME
+   Kernel      NT 10.0.26200
+   Shell       PowerShell 5.1
+   Timezone    America/Sao_Paulo (UTC-03:00)
+   Uptime      2d 5h 30m
+   Procs       312 running
+   Update      KB5050094 (15/02/2025)
 
-Este projeto está licenciado sob a licença MIT. Consulte o arquivo LICENSE para obter mais detalhes.
+   Mobo        ASRock X670E Taichi
+   BIOS        v3.06 [UPDATE v3.18]
+   CPU         AMD Ryzen 9 7950X3D 16-Core Processor
+   RAM         64GB DDR5 @ 4800MHz (4x 16GB Corsair)
+   GPU         NVIDIA GeForce RTX 3080 Ti (12GB)
+   GPU Drv     591.86 [UPDATE v595.79]
+   iGPU        AMD Radeon(TM) Graphics (512MB)
+   Audio       Realtek High Definition Audio
+   Headset     Logitech G935 Gaming Headset
+   Monitor     DELL AW2523HF (360Hz)
+   Monitor     4K Display (120Hz)
 
-Criado por **Lyon**. Sinta-se à vontade para entrar em contato para sugestões ou colaborações.
-- **GitHub**: [github.com/lyon](https://github.com/lyonzin)
+   Keyboard    Razer BlackWidow V3 Pro
+   Mouse       Razer Cobra Pro
 
- 𝓥𝓮𝓻𝓼ã𝓸: 1.0  
- 𝓑𝔂: 𝓛𝔂𝓸𝓷.
+   Ethernet    AA:BB:CC:DD:EE:FF (Killer E3100G 2.5GbE)
+   Link        1 Gbps
+   NTP         a.st1.ntp.br
+   LAN IP      192.168.1.10
+   WAN IP      x.x.x.x (ISP Name)
+
+   Memory      ████████████░░░░░░░░░░ 38.2G / 63.8G (60%)
+   Disk C:     ██████████████░░░░░░░░ 690G / 931G (74%) Windows
+   Disk D:     ████░░░░░░░░░░░░░░░░░░ 380G / 1863G (20%) Storage
+
+   ███   ███   ███   ███   ███   ███   ███   ███
+   ███   ███   ███   ███   ███   ███   ███   ███
+```
+
+#### What it auto-detects
+
+| Category | Details |
+|---|---|
+| **System** | OS build, kernel, shell version, timezone (IANA format), uptime, process count, last Windows update |
+| **Motherboard** | Manufacturer + model, BIOS version with **live update check** |
+| **CPU** | Full processor name |
+| **RAM** | Total capacity, type (DDR4/DDR5), speed, stick count, brand detection from part numbers |
+| **GPU** | Dedicated GPU with VRAM, driver version with **live update check**, integrated GPU |
+| **Audio** | Sound card + gaming headset (auto-separated) |
+| **Monitors** | Per-monitor model name with refresh rate (via Win32 API) |
+| **Peripherals** | Keyboard and mouse (prioritizes gaming brands: Razer, Corsair, Logitech, SteelSeries) |
+| **Network** | Physical NICs with MAC, link speed, NTP server, LAN IP, public IP with ISP name |
+| **Storage** | Per-disk usage bars with volume names and color-coded fill |
+
+#### Update Checks
+
+| Check | Source | Cache |
+|---|---|---|
+| **BIOS** | ASRock Wiki (botflakes.de) | 24 hours |
+| **NVIDIA Driver** | NVIDIA GeForce API | 24 hours |
+
+- Tags like `[UPDATE v3.18]` only appear when a newer version exists — **zero false positives**
+- Works offline: no tag shown, no errors — cached data used if available
+- Cache stored in `%TEMP%` (`sysinfo_bios_cache.txt`, `sysinfo_nvdrv_cache.txt`)
+
+#### Supported Hardware Detection
+
+| Component | Brands Auto-Detected |
+|---|---|
+| **RAM** | Corsair (CMK/CMW/CMH), Kingston (KF/HX), G.Skill (F3/F4/F5), Crucial (BL), Samsung (M3/M4), SK Hynix (HMA/HMT) |
+| **GPU** | NVIDIA (RTX/GTX), AMD (Radeon RX), Intel (UHD/Iris) |
+| **Headset** | Logitech, Corsair, SteelSeries, HyperX, Razer, JBL, Sony, Bose, Sennheiser |
+| **Peripherals** | Razer, Corsair, Logitech, SteelSeries, HyperX, Ducky, Wooting, Glorious |
+
+---
+
+## Command Reference
+
+### General Utilities
+
+| Command | Description | Usage |
+|---|---|---|
+| `sysinfo` | Neofetch-style system dashboard | `sysinfo` |
+| `weather` | Weather forecast via wttr.in | `weather` / `weather "London"` |
+| `myip` | Public IP with ISP name | `myip` |
+| `whois` | IP or domain lookup | `whois 8.8.8.8` / `whois github.com` |
+| `extrair` | Extract zip, rar, 7z, tar, gz | `extrair archive.zip` |
+| `touch` | Create empty file | `touch newfile.txt` |
+| `ffind` | Fast file search with progress bar | `ffind "*.log"` |
+| `findstring` | Search text in files (grep-like) | `findstring "error" ./logs` |
+| `jsonview` | Pretty-print JSON | `jsonview config.json` |
+| `diff` | Colorized file diff | `diff old.txt new.txt` |
+
+### Package Management (Winget)
+
+| Command | Description | Usage |
+|---|---|---|
+| `install` | Install a package | `install firefox` |
+| `remove` | Uninstall a package | `remove firefox` |
+| `package` | Search packages | `package python` |
+| `updatefull` | Update all + cleanup | `updatefull` |
+
+### Security & Network
+
+| Command | Description | Usage |
+|---|---|---|
+| `hashcheck` | Identify hash type + VirusTotal lookup | `hashcheck 5f4dcc3b5aa765d61d...` |
+| `crackhash` | Crack hash online (MD5, SHA1, SHA256, NTLM) | `crackhash e99a18c428cb38d5f260...` |
+| `macfinder` | MAC address vendor lookup | `macfinder AA:BB:CC:DD:EE:FF` |
+| `ports` | List open/listening ports with process | `ports` / `ports 443` |
+| `proc` | Process lookup (PID, RAM, CPU, threads) | `proc chrome` |
+
+### Encoding & Tools
+
+| Command | Description | Usage |
+|---|---|---|
+| `encode_base64` | Encode to Base64 (UTF-8 or UTF-16LE) | `encode_base64 "hello world"` |
+| `decode_base64` | Decode from Base64 | `decode_base64 "aGVsbG8gd29ybGQ="` |
+| `qrcode` | Generate QR code | `qrcode "https://github.com"` |
+| `auto_startup` | Set service to auto-start | `auto_startup ServiceName` |
+
+### Navigation
+
+| Command | Description |
+|---|---|
+| `show-menu` | Display all commands in styled table |
+| `banner` | Show ASCII art banner |
+| `ls` / `dir` | `Get-ChildItem` alias |
+| `grep` | `Select-String` alias |
+
+---
+
+## Configuration
+
+Edit the config block at the top of your `$PROFILE`:
+
+```powershell
+$LyonShell = @{
+    Username      = $env:USERNAME        # Name shown in prompt
+    WeatherCities = @("London")          # Default cities for 'weather'
+}
+```
+
+| Option | Default | Description |
+|---|---|---|
+| `Username` | `$env:USERNAME` | Display name in `┌──[Name@HOST]` |
+| `WeatherCities` | `@("Sao+Paulo")` | Cities shown when running `weather` with no args |
+
+### Weather Cities Format
+
+Use `+` for spaces in city names:
+
+```powershell
+WeatherCities = @("New+York", "San+Francisco", "Tokyo")
+```
+
+---
+
+## Requirements
+
+| Dependency | Required | Purpose |
+|---|---|---|
+| **PowerShell 5.1** | Yes | Ships with Windows 10/11 |
+| **Windows 10/11** | Yes | WMI, Win32 APIs, .NET Framework |
+| **7-Zip** | Optional | `extrair` command (archive extraction) |
+| **Winget** | Optional | `install` / `remove` / `updatefull` |
+| **Internet** | Optional | `myip`, `weather`, `whois`, `crackhash`, BIOS/GPU update checks |
+
+> Zero external PowerShell modules required. Works out of the box on any Windows 10/11 machine.
+
+---
+
+## FAQ
+
+<details>
+<summary><b>Will it break my existing setup?</b></summary>
+
+No. The installer backs up your current profile as `$PROFILE.bak.<timestamp>`. Restore anytime:
+```powershell
+Copy-Item (Get-ChildItem "$PROFILE.bak.*" | Sort-Object LastWriteTime -Descending | Select-Object -First 1) $PROFILE -Force
+```
+</details>
+
+<details>
+<summary><b>Does it work with PowerShell 7 (pwsh)?</b></summary>
+
+Designed for PowerShell 5.1 (Windows built-in). PS7 uses a different `$PROFILE` path — copy the file there manually if needed. Some WMI calls may need adjustment.
+</details>
+
+<details>
+<summary><b>How do I update LyonShell?</b></summary>
+
+Run the install one-liner again. It creates a fresh backup each time.
+</details>
+
+<details>
+<summary><b>BIOS/GPU update tags don't appear?</b></summary>
+
+Update checks need internet access. Results cache for 24 hours in `%TEMP%`. If no update exists, no tag is shown (zero false positives). Currently supports NVIDIA GPUs and ASRock motherboards for update detection.
+</details>
+
+<details>
+<summary><b>Can I use a custom name in the prompt?</b></summary>
+
+Yes — edit `$LyonShell.Username` at the top of your profile:
+```powershell
+$LyonShell = @{
+    Username = "hacker"
+    ...
+}
+```
+</details>
+
+---
+
+## Uninstall
+
+```powershell
+Remove-Item $PROFILE
+# Or restore your backup:
+Copy-Item (Get-ChildItem "$PROFILE.bak.*" | Sort-Object LastWriteTime -Descending | Select-Object -First 1) $PROFILE -Force
+```
+
+---
+
+## License
+
+[MIT](LICENSE)
+
+---
+
+<div align="center">
+
+**[Lyon](https://github.com/lyonzin)** | LyonShell v2.0
+
+</div>

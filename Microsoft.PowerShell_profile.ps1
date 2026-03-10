@@ -1,4 +1,11 @@
-﻿Set-Alias pip2 "C:\Python27\Scripts\pip.exe"
+﻿# ═══════════════════════════════════════════════════════════════════════
+# LYONSHELL - Configuration
+# Edit these values to customize your shell experience
+# ═══════════════════════════════════════════════════════════════════════
+$LyonShell = @{
+    Username      = $env:USERNAME                          # Display name in prompt
+    WeatherCities = @("Sao+Paulo")                         # Default cities for 'weather' command
+}
 
 # Função para exibir o banner estilizado
 function Show-Banner {
@@ -22,66 +29,68 @@ function Show-Banner {
 #                       Show-Menu                              #
 #==============================================================#
 function Show-Menu {
-    # Borda superior
-    Write-Host -ForegroundColor Blue "╔═════════════════════════════════════════════════════════════════════╗"
-    Write-Host -ForegroundColor Blue "║                          MENU DE FUNÇÕES                            ║"
-    Write-Host -ForegroundColor Blue "╠═════════════════════════════════════════════════════════════════════╣"
-
-    # Conteúdo do menu com borda direita azul
-    Write-Host -NoNewline -ForegroundColor Blue "║ [+] extrair        │ " ; Write-Host -NoNewline "Extrair arquivos compactados (zip, rar, 7z)  " -ForegroundColor White ; Write-Host   "  ║" -ForegroundColor Blue
-    Write-Host -NoNewline -ForegroundColor Blue "║ [+] install/remove │ " ; Write-Host -NoNewline "Gerenciamento de pacotes com Winget           " -ForegroundColor White ; Write-Host  " ║" -ForegroundColor Blue
-    Write-Host -NoNewline -ForegroundColor Blue "║ [+] findstring     │ " ; Write-Host -NoNewline "Buscar string em arquivos                    " -ForegroundColor White ; Write-Host   "  ║" -ForegroundColor Blue
-    Write-Host -NoNewline -ForegroundColor Blue "║ [+] encode_base64  │ " ; Write-Host -NoNewline "Codificar strings em Base64                  " -ForegroundColor White ; Write-Host   "  ║" -ForegroundColor Blue
-    Write-Host -NoNewline -ForegroundColor Blue "║ [+] decode_base64  │ " ; Write-Host -NoNewline "Decodificar strings em Base64                " -ForegroundColor White ; Write-Host   "  ║" -ForegroundColor Blue
-    Write-Host -NoNewline -ForegroundColor Blue "║ [+] qrcode         │ " ; Write-Host -NoNewline "Gerar QR Code a partir de uma string         " -ForegroundColor White ; Write-Host   "  ║" -ForegroundColor Blue
-    Write-Host -NoNewline -ForegroundColor Blue "║ [+] macfinder      │ " ; Write-Host -NoNewline "Identificar fabricante de MAC Address        " -ForegroundColor White ; Write-Host   "  ║" -ForegroundColor Blue
-    Write-Host -NoNewline -ForegroundColor Blue "║ [+] auto_startup   │ " ; Write-Host -NoNewline "Habilitar serviço para iniciar automaticamente" -ForegroundColor White ; Write-Host  " ║" -ForegroundColor Blue
-    Write-Host -NoNewline -ForegroundColor Blue "║ [+] check_hash     │ " ; Write-Host -NoNewline "Verificar tipo de hash e consultar VirusTotal" -ForegroundColor White ; Write-Host   "  ║" -ForegroundColor Blue
-    Write-Host -NoNewline -ForegroundColor Blue "║ [+] ffind          │ " ; Write-Host -NoNewline "Encontrar arquivos rapidamente               " -ForegroundColor White ; Write-Host   "  ║" -ForegroundColor Blue
-    Write-Host -NoNewline -ForegroundColor Blue "║ [+] jsonview       │ " ; Write-Host -NoNewline "Visualizar JSON formatado                    " -ForegroundColor White ; Write-Host   "  ║" -ForegroundColor Blue
-    Write-Host -NoNewline -ForegroundColor Blue "║ [+] myip           │ " ; Write-Host -NoNewline "Mostrar IP público e ISP                     " -ForegroundColor White ; Write-Host   "  ║" -ForegroundColor Blue
-    Write-Host -NoNewline -ForegroundColor Blue "║ [+] updatefull     │ " ; Write-Host -NoNewline "Atualizar todos os pacotes instalados        " -ForegroundColor White ; Write-Host   "  ║" -ForegroundColor Blue
-    # Assinatura e versão
-    Write-Host -ForegroundColor Blue "╠═════════════════════════════════════════════════════════════════════╣"
-    Write-Host -ForegroundColor Blue "║                           𝓥𝓮𝓻𝓼ã𝓸: 1.0                               ║"
-    Write-Host -ForegroundColor Blue "║                            𝓑𝔂: 𝓛𝔂𝓸𝓷.                                ║"
-    Write-Host -ForegroundColor Blue "╚═════════════════════════════════════════════════════════════════════╝"
-    Write-Host -ForegroundColor Blue ""
+    Write-Host -ForegroundColor Blue "╔═══════════════════════════════════════════════════════════════════════╗"
+    Write-Host -ForegroundColor Blue "║                          MENU DE MODULOS                              ║"
+    Write-Host -ForegroundColor Blue "╠═══════════════════╤═════════════════════════════════════════════════════╣"
+    Write-Host -NoNewline -ForegroundColor Blue "║ [    Modulos   ]  │ " ; Write-Host -NoNewline "              [    Descricao   ]                 " -ForegroundColor White ; Write-Host "║" -ForegroundColor Blue
+    Write-Host -ForegroundColor Blue "╠═══════════════════╪═════════════════════════════════════════════════════╣"
+    Write-Host -NoNewline -ForegroundColor Blue "║ " ; Write-Host -NoNewline "[+] extrair       " -ForegroundColor Cyan ; Write-Host -NoNewline -ForegroundColor Blue "│ " ; Write-Host -NoNewline "Extrair arquivos compactados (zip, rar, 7z)     " -ForegroundColor White ; Write-Host "║" -ForegroundColor Blue
+    Write-Host -NoNewline -ForegroundColor Blue "║ " ; Write-Host -NoNewline "[+] install/remove" -ForegroundColor Cyan ; Write-Host -NoNewline -ForegroundColor Blue "│ " ; Write-Host -NoNewline "Gerenciamento de pacotes com Winget              " -ForegroundColor White ; Write-Host "║" -ForegroundColor Blue
+    Write-Host -NoNewline -ForegroundColor Blue "║ " ; Write-Host -NoNewline "[+] findstring    " -ForegroundColor Cyan ; Write-Host -NoNewline -ForegroundColor Blue "│ " ; Write-Host -NoNewline "Buscar string em arquivos                        " -ForegroundColor White ; Write-Host "║" -ForegroundColor Blue
+    Write-Host -NoNewline -ForegroundColor Blue "║ " ; Write-Host -NoNewline "[+] encode_base64 " -ForegroundColor Cyan ; Write-Host -NoNewline -ForegroundColor Blue "│ " ; Write-Host -NoNewline "Codificar strings em Base64                      " -ForegroundColor White ; Write-Host "║" -ForegroundColor Blue
+    Write-Host -NoNewline -ForegroundColor Blue "║ " ; Write-Host -NoNewline "[+] decode_base64 " -ForegroundColor Cyan ; Write-Host -NoNewline -ForegroundColor Blue "│ " ; Write-Host -NoNewline "Decodificar strings em Base64                    " -ForegroundColor White ; Write-Host "║" -ForegroundColor Blue
+    Write-Host -NoNewline -ForegroundColor Blue "║ " ; Write-Host -NoNewline "[+] qrcode        " -ForegroundColor Cyan ; Write-Host -NoNewline -ForegroundColor Blue "│ " ; Write-Host -NoNewline "Gerar QR Code a partir de uma string             " -ForegroundColor White ; Write-Host "║" -ForegroundColor Blue
+    Write-Host -NoNewline -ForegroundColor Blue "║ " ; Write-Host -NoNewline "[+] macfinder     " -ForegroundColor Cyan ; Write-Host -NoNewline -ForegroundColor Blue "│ " ; Write-Host -NoNewline "Identificar fabricante de MAC Address            " -ForegroundColor White ; Write-Host "║" -ForegroundColor Blue
+    Write-Host -NoNewline -ForegroundColor Blue "║ " ; Write-Host -NoNewline "[+] auto_startup  " -ForegroundColor Cyan ; Write-Host -NoNewline -ForegroundColor Blue "│ " ; Write-Host -NoNewline "Habilitar servico para iniciar automaticamente   " -ForegroundColor White ; Write-Host "║" -ForegroundColor Blue
+    Write-Host -NoNewline -ForegroundColor Blue "║ " ; Write-Host -NoNewline "[+] hashcheck     " -ForegroundColor Cyan ; Write-Host -NoNewline -ForegroundColor Blue "│ " ; Write-Host -NoNewline "Verificar tipo de hash e consultar VirusTotal    " -ForegroundColor White ; Write-Host "║" -ForegroundColor Blue
+    Write-Host -NoNewline -ForegroundColor Blue "║ " ; Write-Host -NoNewline "[+] ffind         " -ForegroundColor Cyan ; Write-Host -NoNewline -ForegroundColor Blue "│ " ; Write-Host -NoNewline "Encontrar arquivos rapidamente                   " -ForegroundColor White ; Write-Host "║" -ForegroundColor Blue
+    Write-Host -NoNewline -ForegroundColor Blue "║ " ; Write-Host -NoNewline "[+] jsonview      " -ForegroundColor Cyan ; Write-Host -NoNewline -ForegroundColor Blue "│ " ; Write-Host -NoNewline "Visualizar JSON formatado                        " -ForegroundColor White ; Write-Host "║" -ForegroundColor Blue
+    Write-Host -NoNewline -ForegroundColor Blue "║ " ; Write-Host -NoNewline "[+] myip          " -ForegroundColor Cyan ; Write-Host -NoNewline -ForegroundColor Blue "│ " ; Write-Host -NoNewline "Mostrar IP publico e ISP                         " -ForegroundColor White ; Write-Host "║" -ForegroundColor Blue
+    Write-Host -NoNewline -ForegroundColor Blue "║ " ; Write-Host -NoNewline "[+] updatefull    " -ForegroundColor Cyan ; Write-Host -NoNewline -ForegroundColor Blue "│ " ; Write-Host -NoNewline "Atualizar todos os pacotes instalados             " -ForegroundColor White ; Write-Host "║" -ForegroundColor Blue
+    Write-Host -ForegroundColor Blue "╠═══════════════════╪═════════════════════════════════════════════════════╣"
+    Write-Host -NoNewline -ForegroundColor Blue "║ " ; Write-Host -NoNewline "[+] crackhash     " -ForegroundColor Green ; Write-Host -NoNewline -ForegroundColor Blue "│ " ; Write-Host -NoNewline "Crackear hash online (MD5/SHA/NTLM)              " -ForegroundColor Green ; Write-Host "║" -ForegroundColor Blue
+    Write-Host -NoNewline -ForegroundColor Blue "║ " ; Write-Host -NoNewline "[+] ports         " -ForegroundColor Green ; Write-Host -NoNewline -ForegroundColor Blue "│ " ; Write-Host -NoNewline "Listar portas abertas/listening com processo      " -ForegroundColor Green ; Write-Host "║" -ForegroundColor Blue
+    Write-Host -NoNewline -ForegroundColor Blue "║ " ; Write-Host -NoNewline "[+] proc          " -ForegroundColor Green ; Write-Host -NoNewline -ForegroundColor Blue "│ " ; Write-Host -NoNewline "Buscar processo por nome (PID, RAM, CPU)          " -ForegroundColor Green ; Write-Host "║" -ForegroundColor Blue
+    Write-Host -NoNewline -ForegroundColor Blue "║ " ; Write-Host -NoNewline "[+] weather       " -ForegroundColor Green ; Write-Host -NoNewline -ForegroundColor Blue "│ " ; Write-Host -NoNewline "Clima atual (wttr.in)                             " -ForegroundColor Green ; Write-Host "║" -ForegroundColor Blue
+    Write-Host -NoNewline -ForegroundColor Blue "║ " ; Write-Host -NoNewline "[+] whois         " -ForegroundColor Green ; Write-Host -NoNewline -ForegroundColor Blue "│ " ; Write-Host -NoNewline "Lookup de dominio/IP (org, city, country)         " -ForegroundColor Green ; Write-Host "║" -ForegroundColor Blue
+    Write-Host -NoNewline -ForegroundColor Blue "║ " ; Write-Host -NoNewline "[+] sysinfo       " -ForegroundColor Green ; Write-Host -NoNewline -ForegroundColor Blue "│ " ; Write-Host -NoNewline "Dashboard do sistema (CPU, RAM, Disk, Uptime)     " -ForegroundColor Green ; Write-Host "║" -ForegroundColor Blue
+    Write-Host -ForegroundColor Blue "╠═══════════════════╧═════════════════════════════════════════════════════╣"
+    Write-Host -ForegroundColor Blue "║                            Versao: 2.0 | By: Lyon.                    ║"
+    Write-Host -ForegroundColor Blue "╚═══════════════════════════════════════════════════════════════════════╝"
+    Write-Host ""
 }
 
 # Exibir o banner automaticamente ao iniciar o PowerShell
 Show-Banner
 
 # Exibir o menu automaticamente ao iniciar o PowerShell
-Show-Menu
+#Show-Menu
 
 # Criar alias para chamar o banner facilmente
 Set-Alias banner Show-Banner
 
 # Forçar a codificação UTF-16 LE
-[Console]::OutputEncoding = [System.Text.Encoding]::Unicode
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 
-# Função para obter o endereço IP local
+# Cached IP - refreshes every 60s instead of every prompt
+$script:cachedIP = $null
+$script:lastIPCheck = [datetime]::MinValue
 function Get-LocalIPAddress {
-    try {
-        $ipAddress = (Get-NetIPAddress | Where-Object {
-            $_.AddressFamily -eq 'IPv4' -and $_.InterfaceAlias -notlike '*Loopback*'
-        }).IPAddress
-
-        if (-not $ipAddress) {
-            return 'N/A'
-        }
-
-        return $ipAddress[0]
+    if (([datetime]::Now - $script:lastIPCheck).TotalSeconds -gt 60 -or $null -eq $script:cachedIP) {
+        try {
+            $script:cachedIP = (Get-NetIPAddress -AddressFamily IPv4 | Where-Object { $_.InterfaceAlias -match 'Ethernet|Wi-Fi' -and $_.IPAddress -notmatch '^(169\.254|127\.)' }).IPAddress | Select-Object -First 1
+            if (-not $script:cachedIP) { $script:cachedIP = 'N/A' }
+            $script:lastIPCheck = [datetime]::Now
+        } catch { $script:cachedIP = 'N/A' }
     }
-    catch {
-        return 'N/A'
-    }
+    return $script:cachedIP
 }
+
+
 
 # Função para montar o prompt estilizado
 function prompt {
-    $userName = "Lyon"
+    $userName = $LyonShell.Username
     $hostName = $env:COMPUTERNAME
     $time = (Get-Date).ToString("HH:mm:ss")
     $ipAddress = Get-LocalIPAddress
@@ -547,10 +556,10 @@ function global:auto_startup {
 Set-Alias -Name auto_startup -Value global:auto_startup -Option AllScope
 
 #===============================
-# Função Global 'check_hash'
+# Função Global 'hashcheck'
 #===============================
 
-function global:check_hash {
+function global:hashcheck {
     param (
         [string]$hash
     )
@@ -634,7 +643,7 @@ function global:Get-HashInfoFromVirusTotal {
         [string]$hash
     )
 
-    $apiKey = "COLOQUE_AQUI_SUA_API_KEY_DO_VIRUS_TOTAL"
+    $apiKey = "809bccd5f32ec2662873ef2c78bfcae53e8badada5bed0f7870186789d5039fa"
     $url = "https://www.virustotal.com/api/v3/files/$hash"
 
     try {
@@ -831,27 +840,674 @@ Set-Alias -Name jsonview -Value global:jsonview -Option AllScope
 
 function global:myip {
     try {
-        # Consultar o IP público
-        $publicIp = Invoke-RestMethod -Uri "https://ifconfig.me"
-
-        # Consultar informações do IP usando a API do ipinfo.io
-        $ipInfo = Invoke-RestMethod -Uri "https://ipinfo.io/$publicIp/json"
-
-        # Obter o nome do provedor (ISP)
-        $isp = $ipInfo.org -replace "^AS\d+\s", ""  # Remover o prefixo "ASXXXXX" se presente
-
-        # Exibir o resultado
-        Write-Host -NoNewline -ForegroundColor Green "[+] Seu IP Público é: "
-        Write-Host -NoNewline -ForegroundColor White "$publicIp"
+        $resp = Invoke-WebRequest -Uri 'https://ipinfo.io/json' -TimeoutSec 5 -UseBasicParsing
+        $raw = [System.Text.Encoding]::UTF8.GetString($resp.RawContentStream.ToArray())
+        $ipInfo = $raw | ConvertFrom-Json
+        $isp = ($ipInfo.org -replace '^AS\d+\s*', '').Trim()
+        Write-Host -NoNewline -ForegroundColor Green "[+] Seu IP Publico: "
+        Write-Host -NoNewline -ForegroundColor White "$($ipInfo.ip)"
         Write-Host -ForegroundColor Yellow " ($isp)"
     }
     catch {
-        Write-Host "Erro ao consultar o IP público ou informações do provedor. Verifique sua conexão com a internet." -ForegroundColor Red
+        Write-Host "Erro ao consultar IP publico." -ForegroundColor Red
     }
 }
 
 # Criar alias global para a função 'myip'
 Set-Alias -Name myip -Value global:myip -Option AllScope
+
+#==============================================================#
+#              Hash Cracker - Online Lookup                    #
+#==============================================================#
+
+function global:crackhash {
+    param (
+        [string]$hash
+    )
+
+    if (-not $hash) {
+        Write-Host "Uso: crackhash <hash>" -ForegroundColor Yellow
+        Write-Host "     crackhash 5f4dcc3b5aa765d61d8327deb882cf99" -ForegroundColor DarkGray
+        return
+    }
+
+    $hash = $hash.Trim().ToLower()
+    $hashLength = $hash.Length
+
+    # Identificar tipo
+    $hashType = switch ($hashLength) {
+        32  { "MD5" }
+        40  { "SHA-1" }
+        64  { "SHA-256" }
+        96  { "SHA-384" }
+        128 { "SHA-512" }
+        default {
+            if ($hash -match "^\$2[aby]\$") { "bcrypt" }
+            elseif ($hash -match "^[a-f0-9]{32}:[a-f0-9]{32}$") { "NTLM (with salt)" }
+            else { "Desconhecido ($hashLength chars)" }
+        }
+    }
+
+    Write-Host ""
+    Write-Host "  [*] Hash:  $hash" -ForegroundColor White
+    Write-Host "  [*] Tipo:  $hashType" -ForegroundColor Cyan
+    Write-Host ""
+    Write-Host "  [~] Consultando bases online..." -ForegroundColor Yellow
+    Write-Host ""
+
+    $found = $false
+    $plaintext = $null
+
+    # Base 1: nitrxgen (MD5 - sem API key)
+    if ($hashLength -eq 32) {
+        try {
+            $r = Invoke-RestMethod -Uri "https://www.nitrxgen.net/md5db/$hash" -TimeoutSec 8 -ErrorAction Stop
+            if ($r -and $r.Trim() -ne "") {
+                $plaintext = $r.Trim()
+                $found = $true
+                Write-Host "  [+] CRACKED! (nitrxgen.net)" -ForegroundColor Green
+                Write-Host "  [+] Plaintext: " -NoNewline -ForegroundColor Green
+                Write-Host "$plaintext" -ForegroundColor White -BackgroundColor DarkGreen
+                Write-Host ""
+            } else {
+                Write-Host "  [-] nitrxgen.net: nao encontrado" -ForegroundColor DarkGray
+            }
+        } catch {
+            Write-Host "  [-] nitrxgen.net: timeout/erro" -ForegroundColor DarkGray
+        }
+    }
+
+    # Base 2: hashtoolkit
+    if (-not $found) {
+        try {
+            $r = Invoke-WebRequest -Uri "https://hashtoolkit.com/reverse-hash?hash=$hash" -TimeoutSec 10 -UseBasicParsing -ErrorAction Stop
+            if ($r.Content -match '<span class="text-danger">([^<]+)</span>') {
+                $plaintext = $Matches[1].Trim()
+                if ($plaintext -ne "" -and $plaintext -notmatch "not found") {
+                    $found = $true
+                    Write-Host "  [+] CRACKED! (hashtoolkit.com)" -ForegroundColor Green
+                    Write-Host "  [+] Plaintext: " -NoNewline -ForegroundColor Green
+                    Write-Host "$plaintext" -ForegroundColor White -BackgroundColor DarkGreen
+                    Write-Host ""
+                } else {
+                    Write-Host "  [-] hashtoolkit.com: nao encontrado" -ForegroundColor DarkGray
+                }
+            } else {
+                Write-Host "  [-] hashtoolkit.com: nao encontrado" -ForegroundColor DarkGray
+            }
+        } catch {
+            Write-Host "  [-] hashtoolkit.com: timeout/erro" -ForegroundColor DarkGray
+        }
+    }
+
+    # Base 3: md5decrypt.net (MD5/SHA1/SHA256)
+    if (-not $found -and $hashLength -in @(32, 40, 64)) {
+        try {
+            $subpath = switch ($hashLength) {
+                32 { "" }
+                40 { "Sha1" }
+                64 { "Sha256" }
+            }
+            $uri = "https://md5decrypt.net/Api/api.php?hash=$hash&hash_type=$subpath&email=demod@gmail.com&code=1152464b80a61728"
+            $r = Invoke-RestMethod -Uri $uri -TimeoutSec 10 -ErrorAction Stop
+            if ($r -and $r.Trim() -ne "" -and $r.Trim() -notmatch "ERROR|ERREUR|CODE") {
+                $plaintext = $r.Trim()
+                $found = $true
+                Write-Host "  [+] CRACKED! (md5decrypt.net)" -ForegroundColor Green
+                Write-Host "  [+] Plaintext: " -NoNewline -ForegroundColor Green
+                Write-Host "$plaintext" -ForegroundColor White -BackgroundColor DarkGreen
+                Write-Host ""
+            } else {
+                Write-Host "  [-] md5decrypt.net: nao encontrado" -ForegroundColor DarkGray
+            }
+        } catch {
+            Write-Host "  [-] md5decrypt.net: timeout/erro" -ForegroundColor DarkGray
+        }
+    }
+
+    # Base 4: hashes.com (identificacao gratis)
+    if (-not $found) {
+        try {
+            $body = @{ hash = $hash }
+            $r = Invoke-RestMethod -Uri "https://hashes.com/en/api/identifier" -Method POST -Body $body -TimeoutSec 10 -ErrorAction Stop
+            if ($r -and $r -match "possibleHashTypes") {
+                Write-Host "  [i] hashes.com identificou tipos possiveis" -ForegroundColor DarkGray
+            }
+        } catch {
+            Write-Host "  [-] hashes.com: timeout/erro" -ForegroundColor DarkGray
+        }
+    }
+
+    # Base 5: NTLM.pw (NTLM hashes)
+    if (-not $found -and $hashLength -eq 32) {
+        try {
+            $r = Invoke-WebRequest -Uri "https://ntlm.pw/$hash" -TimeoutSec 10 -UseBasicParsing -ErrorAction Stop
+            if ($r.Content -match '<td class="res-text">([^<]+)</td>') {
+                $plaintext = $Matches[1].Trim()
+                if ($plaintext -ne "" -and $plaintext -ne $hash) {
+                    $found = $true
+                    Write-Host "  [+] CRACKED! (ntlm.pw)" -ForegroundColor Green
+                    Write-Host "  [+] Plaintext: " -NoNewline -ForegroundColor Green
+                    Write-Host "$plaintext" -ForegroundColor White -BackgroundColor DarkGreen
+                    Write-Host ""
+                } else {
+                    Write-Host "  [-] ntlm.pw: nao encontrado" -ForegroundColor DarkGray
+                }
+            } else {
+                Write-Host "  [-] ntlm.pw: nao encontrado" -ForegroundColor DarkGray
+            }
+        } catch {
+            Write-Host "  [-] ntlm.pw: timeout/erro" -ForegroundColor DarkGray
+        }
+    }
+
+    # Resumo
+    Write-Host ""
+    if ($found) {
+        Write-Host "  ============================================" -ForegroundColor Green
+        Write-Host "  RESULTADO: $hash -> $plaintext" -ForegroundColor Green
+        Write-Host "  ============================================" -ForegroundColor Green
+    } else {
+        Write-Host "  ============================================" -ForegroundColor Red
+        Write-Host "  NAO ENCONTRADO em nenhuma base online" -ForegroundColor Red
+        Write-Host "  ============================================" -ForegroundColor Red
+        Write-Host ""
+        Write-Host "  [?] Tente:" -ForegroundColor Yellow
+        Write-Host "      - hashcat -m 0 $hash rockyou.txt" -ForegroundColor DarkGray
+        Write-Host "      - john --format=raw-md5 hash.txt" -ForegroundColor DarkGray
+        Write-Host "      - https://crackstation.net (manual)" -ForegroundColor DarkGray
+    }
+    Write-Host ""
+}
+
+Set-Alias -Name crackhash -Value global:crackhash -Option AllScope
+
+#==============================================================#
+#           Portas Abertas / Listening (netstat)                #
+#==============================================================#
+
+function global:ports {
+    param ([string]$filter)
+
+    $connections = Get-NetTCPConnection -ErrorAction SilentlyContinue | Where-Object {
+        $_.State -eq 'Listen' -or $_.State -eq 'Established'
+    }
+
+    if (-not $connections) {
+        Write-Host "Nenhuma conexao encontrada." -ForegroundColor Red
+        return
+    }
+
+    $results = $connections | ForEach-Object {
+        $proc = Get-Process -Id $_.OwningProcess -ErrorAction SilentlyContinue
+        [PSCustomObject]@{
+            Proto  = "TCP"
+            Local  = "$($_.LocalAddress):$($_.LocalPort)"
+            Remote = "$($_.RemoteAddress):$($_.RemotePort)"
+            State  = $_.State
+            PID    = $_.OwningProcess
+            Process = if ($proc) { $proc.ProcessName } else { "-" }
+        }
+    }
+
+    if ($filter) {
+        $results = $results | Where-Object {
+            $_.Local -like "*$filter*" -or $_.Process -like "*$filter*" -or $_.PID -eq $filter
+        }
+    }
+
+    $results | Sort-Object State, Local | Format-Table -AutoSize | Out-Host
+}
+
+Set-Alias -Name ports -Value global:ports -Option AllScope
+
+#==============================================================#
+#              Busca de Processo (proc)                         #
+#==============================================================#
+
+function global:proc {
+    param ([string]$name)
+
+    if (-not $name) {
+        Write-Host "Uso: proc <nome_processo>" -ForegroundColor Yellow
+        Write-Host "     proc chrome" -ForegroundColor DarkGray
+        return
+    }
+
+    $procs = Get-Process | Where-Object { $_.ProcessName -like "*$name*" } |
+        Select-Object @{N='PID';E={$_.Id}},
+                      @{N='Nome';E={$_.ProcessName}},
+                      @{N='CPU(s)';E={[math]::Round($_.CPU, 1)}},
+                      @{N='RAM(MB)';E={[math]::Round($_.WorkingSet64 / 1MB, 1)}},
+                      @{N='Threads';E={$_.Threads.Count}}
+
+    if ($procs) {
+        $procs | Sort-Object 'RAM(MB)' -Descending | Format-Table -AutoSize | Out-Host
+        $total = ($procs | Measure-Object -Property 'RAM(MB)' -Sum).Sum
+        Write-Host "  Total RAM: $([math]::Round($total, 1)) MB | Processos: $($procs.Count)" -ForegroundColor Cyan
+    } else {
+        Write-Host "Nenhum processo encontrado com '$name'" -ForegroundColor Red
+    }
+}
+
+Set-Alias -Name proc -Value global:proc -Option AllScope
+
+#==============================================================#
+#                    Weather (wttr.in)                          #
+#==============================================================#
+
+function global:weather {
+    param ([string[]]$cities)
+
+    $headers = @{ "User-Agent" = "curl/7.68.0" }
+    if (-not $cities -or $cities.Count -eq 0) {
+        $cities = $LyonShell.WeatherCities
+    }
+
+    Write-Host ""
+    foreach ($city in $cities) {
+        try {
+            $r = Invoke-RestMethod -Uri "https://wttr.in/${city}?format=3&lang=pt" -Headers $headers -TimeoutSec 10
+            $detail = Invoke-RestMethod -Uri "https://wttr.in/${city}?format=%t+%h+%w+%C&lang=pt" -Headers $headers -TimeoutSec 10
+            $displayName = $r.Trim() -replace '\+', ' '
+            Write-Host "  $displayName" -ForegroundColor Cyan
+            Write-Host "  $($detail.Trim())" -ForegroundColor White
+            Write-Host ""
+        } catch {
+            Write-Host "  Erro: $city" -ForegroundColor Red
+        }
+    }
+}
+
+Set-Alias -Name weather -Value global:weather -Option AllScope
+
+#==============================================================#
+#                 Whois Lookup (dominio/IP)                     #
+#==============================================================#
+
+function global:whois {
+    param ([string]$target)
+
+    if (-not $target) {
+        Write-Host "Uso: whois <dominio ou IP>" -ForegroundColor Yellow
+        return
+    }
+
+    try {
+        # IP check
+        if ($target -match '^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$') {
+            $r = Invoke-RestMethod -Uri "https://ipinfo.io/$target/json" -TimeoutSec 8
+            Write-Host ""
+            Write-Host "  IP:       $($r.ip)" -ForegroundColor White
+            Write-Host "  Hostname: $($r.hostname)" -ForegroundColor White
+            Write-Host "  Org:      $($r.org)" -ForegroundColor Cyan
+            Write-Host "  City:     $($r.city)" -ForegroundColor White
+            Write-Host "  Region:   $($r.region)" -ForegroundColor White
+            Write-Host "  Country:  $($r.country)" -ForegroundColor White
+            Write-Host "  Loc:      $($r.loc)" -ForegroundColor DarkGray
+            Write-Host ""
+        } else {
+            # Domain - resolve + lookup
+            $ips = [System.Net.Dns]::GetHostAddresses($target) | ForEach-Object { $_.IPAddressToString }
+            $ip = $ips | Select-Object -First 1
+            $r = Invoke-RestMethod -Uri "https://ipinfo.io/$ip/json" -TimeoutSec 8
+
+            Write-Host ""
+            Write-Host "  Domain:   $target" -ForegroundColor Cyan
+            Write-Host "  IPs:      $($ips -join ', ')" -ForegroundColor White
+            Write-Host "  Org:      $($r.org)" -ForegroundColor White
+            Write-Host "  City:     $($r.city)" -ForegroundColor White
+            Write-Host "  Region:   $($r.region)" -ForegroundColor White
+            Write-Host "  Country:  $($r.country)" -ForegroundColor White
+            Write-Host ""
+        }
+    } catch {
+        Write-Host "Erro ao consultar whois: $_" -ForegroundColor Red
+    }
+}
+
+Set-Alias -Name whois -Value global:whois -Option AllScope
+
+#==============================================================#
+#              System Info Dashboard (sysinfo)                  #
+#==============================================================#
+
+function global:sysinfo {
+    # Collect data
+    $os = Get-CimInstance Win32_OperatingSystem
+    $cs = Get-CimInstance Win32_ComputerSystem
+    $cpu = Get-CimInstance Win32_Processor | Select-Object -First 1
+    $gpus = Get-CimInstance Win32_VideoController
+    $disks = Get-CimInstance Win32_LogicalDisk -Filter "DriveType=3"
+    $board = Get-CimInstance Win32_BaseBoard
+    $nics = Get-CimInstance Win32_NetworkAdapter | Where-Object { $_.PhysicalAdapter -eq $true -and $_.MACAddress -and $_.NetConnectionID -and $_.NetConnectionID -notmatch 'VMware|Hyper-V|vEthernet|Bluetooth' }
+    $audio = (Get-CimInstance Win32_SoundDevice | Where-Object { $_.Name -notmatch 'NVIDIA|AMD|Virtual|Logitech|Corsair|SteelSeries|HyperX|Razer|JBL|Sony|Bose|Sennheiser' } | Select-Object -First 1).Name
+    $headset = (Get-CimInstance Win32_SoundDevice | Where-Object { $_.Name -match 'Logitech|Corsair|SteelSeries|HyperX|Razer|JBL|Sony|Bose|Sennheiser' } | Select-Object -First 1).Name
+    $bios = Get-CimInstance Win32_BIOS
+    $kb = (Get-CimInstance Win32_Keyboard | Where-Object { $_.Description -match 'Razer|Corsair|Logitech|SteelSeries|HyperX|Ducky|Wooting' } | Select-Object -First 1).Description
+    if (-not $kb) { $kb = (Get-CimInstance Win32_Keyboard | Select-Object -First 1).Description }
+    $mouse = (Get-CimInstance Win32_PointingDevice | Where-Object { $_.Name -match 'Razer|Corsair|Logitech|SteelSeries|HyperX|Glorious' } | Select-Object -First 1).Name
+    if (-not $mouse) { $mouse = (Get-CimInstance Win32_PointingDevice | Select-Object -First 1).Name }
+    $monitors = @()
+    try {
+        # Get per-monitor Hz via EnumDisplaySettings
+        Add-Type -TypeDefinition @"
+using System; using System.Runtime.InteropServices;
+public class SysInfoMonHz {
+    [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+    public static extern int EnumDisplaySettingsW(string dev, int mode, ref DEVMODE dm);
+    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
+    public struct DEVMODE {
+        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)] public string dmDeviceName;
+        public short dmSpecVersion; public short dmDriverVersion; public short dmSize;
+        public short dmDriverExtra; public int dmFields; public int dmPositionX;
+        public int dmPositionY; public int dmDisplayOrientation; public int dmDisplayFixedOutput;
+        public short dmColor; public short dmDuplex; public short dmYResolution;
+        public short dmTTOption; public short dmCollate;
+        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)] public string dmFormName;
+        public short dmLogPixels; public int dmBitsPerPel; public int dmPelsWidth;
+        public int dmPelsHeight; public int dmDisplayFlags; public int dmDisplayFrequency;
+    }
+}
+"@ -ErrorAction SilentlyContinue
+        Add-Type -AssemblyName System.Windows.Forms -ErrorAction SilentlyContinue
+
+        # Build Hz lookup: DISPLAY index -> Hz
+        $hzLookup = @{}
+        foreach ($scr in [System.Windows.Forms.Screen]::AllScreens) {
+            $dm = New-Object SysInfoMonHz+DEVMODE
+            $dm.dmSize = [System.Runtime.InteropServices.Marshal]::SizeOf($dm)
+            $null = [SysInfoMonHz]::EnumDisplaySettingsW($scr.DeviceName, -1, [ref]$dm)
+            # Extract display number from \\.\DISPLAY1
+            $dispNum = ($scr.DeviceName -replace '[^\d]','')
+            $hzLookup[$dispNum] = $dm.dmDisplayFrequency
+        }
+
+        # Build Hz array sorted by DISPLAY number (1,2,3...)
+        $hzArray = $hzLookup.GetEnumerator() | Sort-Object Name | ForEach-Object { $_.Value }
+
+        # WMI monitors come in reverse DISPLAY order, so reverse the Hz array
+        [array]::Reverse($hzArray)
+
+        $monIds = Get-CimInstance WmiMonitorID -Namespace root\wmi -ErrorAction Stop
+        $monIdx = 0
+        foreach ($mon in $monIds) {
+            $mfr = -join ($mon.ManufacturerName | Where-Object {$_ -ne 0} | ForEach-Object {[char]$_})
+            $name = -join ($mon.UserFriendlyName | Where-Object {$_ -ne 0} | ForEach-Object {[char]$_})
+            $monStr = "$name".Trim()
+            if ($monIdx -lt $hzArray.Count) {
+                $hz = $hzArray[$monIdx]
+                if ($hz -and $hz -gt 0) { $monStr += " (${hz}Hz)" }
+            }
+            $monitors += $monStr
+            $monIdx++
+        }
+    } catch {}
+
+    $totalRAM = [math]::Round($os.TotalVisibleMemorySize / 1MB, 1)
+    $usedRAM = [math]::Round(($os.TotalVisibleMemorySize - $os.FreePhysicalMemory) / 1MB, 1)
+    $ramPct = [math]::Round(($usedRAM / $totalRAM) * 100)
+
+    $uptime = (Get-Date) - $os.LastBootUpTime
+    $uptimeStr = if ($uptime.Days -gt 0) { "{0}d {1}h {2}m" -f $uptime.Days, $uptime.Hours, $uptime.Minutes } else { "{0}h {1}m" -f $uptime.Hours, $uptime.Minutes }
+
+    $shell = "PowerShell $($PSVersionTable.PSVersion.Major).$($PSVersionTable.PSVersion.Minor)"
+    $procs = (Get-Process).Count
+    $osName = $os.Caption -replace 'Microsoft ',''
+    $cpuName = $cpu.Name.Trim()
+    $mobo = "$($board.Manufacturer) $($board.Product)"
+
+    # RAM sticks info
+    $ramSticks = Get-CimInstance Win32_PhysicalMemory
+    $ramCount = ($ramSticks | Measure-Object).Count
+    $ramSize = [math]::Round(($ramSticks | Select-Object -First 1).Capacity / 1GB)
+    $ramSpeed = ($ramSticks | Select-Object -First 1).Speed
+    $ramType = switch (($ramSticks | Select-Object -First 1).SMBIOSMemoryType) { 20 {"DDR"} 21 {"DDR2"} 24 {"DDR3"} 26 {"DDR4"} 34 {"DDR5"} default {"DDR"} }
+    $ramPart = ($ramSticks | Select-Object -First 1).PartNumber.Trim()
+    # Decode brand from part number
+    $ramBrand = if ($ramPart -match '^CMK|^CMW|^CMH|^CMP') { "Corsair" } elseif ($ramPart -match '^KF|^HX') { "Kingston" } elseif ($ramPart -match '^F[345]-') { "G.Skill" } elseif ($ramPart -match '^BL') { "Crucial" } elseif ($ramPart -match '^M[34]') { "Samsung" } elseif ($ramPart -match '^HMA|^HMT') { "SK Hynix" } else { $ramPart }
+    $ramTotal = $ramCount * $ramSize
+    $ramStr = "${ramTotal}GB $ramType @ ${ramSpeed}MHz (${ramCount}x ${ramSize}GB $ramBrand)"
+
+    # GPU with VRAM
+    $gpuDedicated = $gpus | Where-Object { $_.Name -match 'NVIDIA|RTX|GTX|Radeon RX' } | Select-Object -First 1
+    if (-not $gpuDedicated) { $gpuDedicated = $gpus | Select-Object -First 1 }
+    $gpuVram = [math]::Round($gpuDedicated.AdapterRAM / 1GB, 0)
+    $gpuStr = "$($gpuDedicated.Name) ($($gpuVram)GB)"
+
+    # Resolution from dedicated GPU
+    $resGpu = $gpus | Where-Object { $_.CurrentHorizontalResolution } | Select-Object -First 1
+    $resolution = if ($resGpu) { "$($resGpu.CurrentHorizontalResolution)x$($resGpu.CurrentVerticalResolution) @ $($resGpu.CurrentRefreshRate)Hz" } else { "N/A" }
+
+    # iGPU
+    $gpuIntegrated = $gpus | Where-Object { $_.Name -match 'AMD Radeon\(TM\) Graphics|Intel.*UHD|Intel.*Iris' } | Select-Object -First 1
+
+    # Public IP + ISP
+    $pubIP = "N/A"
+    $ispName = ""
+    try {
+        $resp = Invoke-WebRequest -Uri 'https://ipinfo.io/json' -TimeoutSec 3 -UseBasicParsing
+        $raw = [System.Text.Encoding]::UTF8.GetString($resp.RawContentStream.ToArray())
+        $ipData = $raw | ConvertFrom-Json
+        $pubIP = $ipData.ip
+        if ($ipData.org) { $ispName = ($ipData.org -replace '^AS\d+\s*', '').Trim() }
+    } catch {}
+
+    # BIOS info + age tag
+    $biosVer = $bios.SMBIOSBIOSVersion
+    $biosDate = $bios.ReleaseDate
+
+    # BIOS update check (cached 24h, via ASRock Wiki)
+    $biosTag = ""
+    $biosCacheFile = "$env:TEMP\sysinfo_bios_cache.txt"
+    $biosCacheValid = $false
+    if (Test-Path $biosCacheFile) {
+        $cacheAge = ((Get-Date) - (Get-Item $biosCacheFile).LastWriteTime).TotalHours
+        if ($cacheAge -lt 24) { $biosCacheValid = $true }
+    }
+    if ($biosCacheValid) {
+        $biosLatest = (Get-Content $biosCacheFile -ErrorAction SilentlyContinue).Trim()
+    } else {
+        try {
+            $wikiPage = Invoke-WebRequest -Uri "https://botflakes.de/asrockwiki/bios/amd/" -TimeoutSec 5 -UseBasicParsing -ErrorAction Stop
+            $boardName = $board.Product -replace ' ','' -replace 'X670E','x670e-'
+            $secIdx = $wikiPage.Content.IndexOf("$($board.Product)</strong>")
+            if ($secIdx -gt 0) {
+                $section = $wikiPage.Content.Substring($secIdx, [math]::Min(3000, $wikiPage.Content.Length - $secIdx))
+                $verMatches = [regex]::Matches($section, '<tr><td[^>]*>(\d+\.\d+)')
+                if ($verMatches.Count -gt 0) {
+                    $biosLatest = $verMatches[0].Groups[1].Value
+                    $biosLatest | Out-File $biosCacheFile -Force
+                }
+            }
+        } catch { $biosLatest = $null }
+    }
+    if ($biosLatest -and [version]"$biosLatest.0" -gt [version]"$biosVer.0") {
+        $biosTag = " [UPDATE v$biosLatest]"
+    }
+
+    # GPU Driver version (NVIDIA format: 32.0.15.XXYY -> XXX.YY)
+    $nvidiaGpu = $gpus | Where-Object { $_.Name -match 'NVIDIA' } | Select-Object -First 1
+    $gpuDriverStr = "N/A"
+    $gpuDriverTag = ""
+    $currentNvVer = ""
+    if ($nvidiaGpu) {
+        $drvRaw = $nvidiaGpu.DriverVersion
+        if ($drvRaw -match '(\d+)\.(\d+)$') {
+            # NVIDIA marketing format: "32.0.15.9186" → concat last two "159186" → last 5 "59186" → "591.86"
+            $combined = "$($Matches[1])$($Matches[2])"
+            $last5 = $combined.Substring($combined.Length - 5)
+            $currentNvVer = "$($last5.Substring(0,3)).$($last5.Substring(3,2))"
+            $gpuDriverStr = $currentNvVer
+        } else { $gpuDriverStr = $drvRaw }
+
+        # NVIDIA driver update check (cached 24h)
+        $nvCacheFile = "$env:TEMP\sysinfo_nvdrv_cache.txt"
+        $nvCacheValid = $false
+        if (Test-Path $nvCacheFile) {
+            $cAge = ((Get-Date) - (Get-Item $nvCacheFile).LastWriteTime).TotalHours
+            if ($cAge -lt 24) { $nvCacheValid = $true }
+        }
+        if ($nvCacheValid) {
+            $nvLatest = Get-Content $nvCacheFile -ErrorAction SilentlyContinue
+        } else {
+            try {
+                $nvApi = Invoke-RestMethod -Uri "https://gfwsl.geforce.com/services_toolkit/services/com/nvidia/services/AjaxDriverService.php?func=DriverManualLookup&psid=120&pfid=929&osID=57&languageCode=1046&isWHQL=1&dch=1&sort1=0&numberOfResults=1" -TimeoutSec 5 -ErrorAction Stop
+                if ($nvApi.IDS -and $nvApi.IDS[0].downloadInfo.Version) {
+                    $nvLatest = $nvApi.IDS[0].downloadInfo.Version
+                    $nvLatest | Out-File $nvCacheFile -Force
+                }
+            } catch { $nvLatest = $null }
+        }
+        if ($nvLatest -and $currentNvVer) {
+            $curNum = [decimal]($currentNvVer -replace '\.','')
+            $latNum = [decimal]($nvLatest -replace '\.','')
+            if ($latNum -gt $curNum) { $gpuDriverTag = " [UPDATE v$nvLatest]" }
+        }
+    }
+
+    # Net link speed
+    $ethNic = Get-CimInstance Win32_NetworkAdapter | Where-Object { $_.NetConnectionID -eq 'Ethernet' -and $_.Speed } | Select-Object -First 1
+    $netSpeed = if ($ethNic -and $ethNic.Speed) { "$([math]::Round($ethNic.Speed / 1e9, 1)) Gbps" } else { "N/A" }
+
+    # Timezone
+    $tz = (Get-TimeZone)
+    $tzCity = switch -Wildcard ($tz.Id) { "E. South America*" {"America/Sao_Paulo"} "Pacific*" {"America/Los_Angeles"} "Eastern*" {"America/New_York"} "Central*" {"America/Chicago"} default {$tz.Id -replace ' Standard Time',''} }
+    $tzStr = "$tzCity (UTC$( if($tz.BaseUtcOffset.Hours -ge 0){'+'}else{''} )$($tz.BaseUtcOffset.Hours.ToString('00')):$($tz.BaseUtcOffset.Minutes.ToString('00')))"
+
+    # NTP Server
+    $ntpServer = try { ((Get-ItemProperty 'HKLM:\SYSTEM\CurrentControlSet\Services\W32Time\Parameters' -ErrorAction Stop).NtpServer -split ',')[0] } catch { "N/A" }
+
+    # Last Windows Update
+    $lastUpdate = Get-HotFix -ErrorAction SilentlyContinue | Where-Object { $_.InstalledOn } | Sort-Object InstalledOn -Descending | Select-Object -First 1
+    $lastUpdateStr = if ($lastUpdate) { "$($lastUpdate.HotFixID) ($($lastUpdate.InstalledOn.ToString('dd/MM/yyyy')))" } else { "N/A" }
+
+    # Helpers
+    function Write-Bar([int]$pct, [int]$w = 22) {
+        $filled = [math]::Round($pct / 100 * $w)
+        $empty = $w - $filled
+        $color = if ($pct -gt 85) { "Red" } elseif ($pct -gt 60) { "Yellow" } else { "Green" }
+        Write-Host -NoNewline ([string][char]0x2588 * $filled) -ForegroundColor $color
+        Write-Host -NoNewline ([string][char]0x2591 * $empty) -ForegroundColor DarkGray
+    }
+
+    function Write-Line([string]$lbl, [string]$val, [string]$valColor = "White") {
+        Write-Host -NoNewline "   "
+        Write-Host -NoNewline $lbl.PadRight(12) -ForegroundColor Blue
+        Write-Host $val -ForegroundColor $valColor
+    }
+
+    function Write-Section { Write-Host "" }
+
+    # === RENDER ===
+    $user = "$($env:USERNAME)@$($env:COMPUTERNAME)"
+    $sep = ([string][char]0x2500) * ($user.Length + 2)
+
+    Write-Host ""
+    Write-Host "   $user" -ForegroundColor Blue
+    Write-Host "   $sep" -ForegroundColor DarkGray
+
+    # System
+    $buildNum = (Get-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion' -ErrorAction SilentlyContinue).DisplayVersion
+    Write-Line "OS"       "$osName $($os.OSArchitecture) (Build $($os.BuildNumber) / $buildNum)"
+    Write-Line "Host"     $env:COMPUTERNAME
+    Write-Line "Kernel"   "NT $($os.Version)"
+    Write-Line "Shell"    $shell
+    Write-Line "Timezone" $tzStr
+    Write-Line "Uptime"   $uptimeStr
+    Write-Line "Procs"    "$procs running"
+    Write-Line "Update"   $lastUpdateStr
+
+    Write-Section
+
+    # Hardware
+    Write-Line "Mobo"     $mobo
+    Write-Host -NoNewline "   "
+    Write-Host -NoNewline "BIOS".PadRight(12) -ForegroundColor Blue
+    Write-Host -NoNewline "v$biosVer" -ForegroundColor White
+    if ($biosTag) { Write-Host $biosTag -ForegroundColor DarkYellow } else { Write-Host "" }
+    Write-Line "CPU"      $cpuName
+    Write-Line "RAM"      $ramStr
+    Write-Line "GPU"      $gpuStr
+    Write-Host -NoNewline "   "
+    Write-Host -NoNewline "GPU Drv".PadRight(12) -ForegroundColor Blue
+    Write-Host -NoNewline $gpuDriverStr -ForegroundColor White
+    if ($gpuDriverTag) { Write-Host $gpuDriverTag -ForegroundColor DarkYellow } else { Write-Host "" }
+    if ($gpuIntegrated) {
+        $iVram = [math]::Round($gpuIntegrated.AdapterRAM / 1MB, 0)
+        Write-Line "iGPU"  "$($gpuIntegrated.Name) (${iVram}MB)"
+    }
+    Write-Line "Audio"    $(if ($audio) { $audio } else { "N/A" })
+    if ($headset) { Write-Line "Headset" $headset }
+
+    # Monitors (with Hz)
+    foreach ($mon in $monitors) {
+        Write-Line "Monitor" $mon
+    }
+
+    Write-Section
+
+    # Peripherals
+    Write-Line "Keyboard" $(if ($kb) { $kb } else { "N/A" })
+    Write-Line "Mouse"    $(if ($mouse) { $mouse } else { "N/A" })
+
+    Write-Section
+
+    # Network
+    foreach ($nic in $nics) {
+        $nicLabel = $nic.NetConnectionID
+        Write-Host -NoNewline "   "
+        Write-Host -NoNewline $nicLabel.PadRight(12) -ForegroundColor Blue
+        Write-Host -NoNewline $nic.MACAddress -ForegroundColor White
+        Write-Host " ($($nic.Name))" -ForegroundColor DarkGray
+    }
+    Write-Line "Link"     $netSpeed
+    Write-Line "NTP"      $ntpServer
+    Write-Line "LAN IP"   (Get-LocalIPAddress)
+    Write-Host -NoNewline "   "
+    Write-Host -NoNewline "WAN IP".PadRight(12) -ForegroundColor Blue
+    Write-Host -NoNewline $pubIP -ForegroundColor Green
+    if ($ispName) { Write-Host " ($ispName)" -ForegroundColor DarkGray } else { Write-Host "" }
+
+    Write-Section
+
+    # Memory bar
+    Write-Host -NoNewline "   "
+    Write-Host -NoNewline "Memory".PadRight(12) -ForegroundColor Blue
+    Write-Bar $ramPct
+    Write-Host " ${usedRAM}G / ${totalRAM}G ($ramPct%)" -ForegroundColor DarkGray
+
+    # Disk bars
+    foreach ($d in $disks) {
+        $dTotal = [math]::Round($d.Size / 1GB)
+        $dUsed = [math]::Round(($d.Size - $d.FreeSpace) / 1GB)
+        $dPct = if ($dTotal -gt 0) { [math]::Round(($dUsed / $dTotal) * 100) } else { 0 }
+        $dName = if ($d.VolumeName) { $d.VolumeName } else { "Local Disk" }
+        $dLabel = "$($d.DeviceID) $dName"
+        $dLabel = "Disk $($d.DeviceID)"
+        Write-Host -NoNewline "   "
+        Write-Host -NoNewline $dLabel.PadRight(12) -ForegroundColor Blue
+        Write-Bar $dPct
+        Write-Host -NoNewline " ${dUsed}G / ${dTotal}G ($dPct%)" -ForegroundColor DarkGray
+        Write-Host " $dName" -ForegroundColor DarkYellow
+    }
+
+    # Color palette
+    Write-Host ""
+    Write-Host -NoNewline "   "
+    foreach ($clr in @("Black","DarkRed","DarkGreen","DarkYellow","DarkBlue","DarkMagenta","DarkCyan","Gray")) {
+        Write-Host -NoNewline "   " -BackgroundColor $clr
+    }
+    Write-Host ""
+    Write-Host -NoNewline "   "
+    foreach ($clr in @("DarkGray","Red","Green","Yellow","Blue","Magenta","Cyan","White")) {
+        Write-Host -NoNewline "   " -BackgroundColor $clr
+    }
+    Write-Host ""
+    Write-Host ""
+}
+
+Set-Alias -Name sysinfo -Value global:sysinfo -Option AllScope
 
 #==============================================================#
 #         Atualizar Pacotes no Windows com Winget              #
@@ -860,40 +1516,60 @@ Set-Alias -Name myip -Value global:myip -Option AllScope
 function global:updatefull {
     Write-Host "Iniciando atualização completa do sistema..." -ForegroundColor Cyan
 
-    # Atualizar a lista de pacotes
-    Write-Host "[+] Atualizando a lista de pacotes disponíveis..." -ForegroundColor Green
-    winget upgrade --accept-source-agreements --accept-package-agreements
-
-    # Atualizar todos os pacotes instalados
-    Write-Host "[+] Atualizando todos os pacotes instalados..." -ForegroundColor Green
+    # Passo 1: Verificar atualizações disponíveis
+    Write-Host "[+] Verificando pacotes atualizáveis..." -ForegroundColor Green
     try {
-        $upgradeResult = winget upgrade --all --include-unknown --accept-source-agreements --accept-package-agreements
-        if ($upgradeResult -match "Nenhum pacote instalado foi encontrado") {
+        $checkUpdates = winget upgrade --accept-source-agreements --accept-package-agreements
+        if ($checkUpdates -match "Nenhum pacote instalado foi encontrado") {
             Write-Host "[+] Todos os pacotes já estão atualizados." -ForegroundColor Yellow
+            return
         }
     }
     catch {
-        Write-Host "[!] Erro durante a atualização dos pacotes: $_" -ForegroundColor Red
+        Write-Host "[!] Erro ao verificar atualizações: $_" -ForegroundColor Red
+        return
     }
 
-    # Executar a limpeza automática de pacotes obsoletos (remoção automática)
-    Write-Host "[+] Limpando pacotes obsoletos e realizando autoremove..." -ForegroundColor Green
-    winget list --source winget | ForEach-Object {
-        $packageName = $_.split()[0]
-        if ($packageName -ne "") {
-            try {
-                winget uninstall $packageName --silent --accept-source-agreements
-            }
-            catch {
-                Write-Host "Não foi possível limpar: $packageName" -ForegroundColor Red
+    # Passo 2: Aplicar todas as atualizações disponíveis
+    Write-Host "[+] Aplicando atualizações para todos os pacotes instalados..." -ForegroundColor Green
+    try {
+        winget upgrade --all --include-unknown --accept-source-agreements --accept-package-agreements
+    }
+    catch {
+        Write-Host "[!] Erro ao aplicar atualizações: $_" -ForegroundColor Red
+    }
+
+    # Passo 3: Limpeza automática de pacotes obsoletos
+    Write-Host "[+] Realizando limpeza de pacotes obsoletos..." -ForegroundColor Green
+    try {
+        $installedPackages = winget list --source winget
+        foreach ($package in $installedPackages) {
+            $packageId = $package.split()[0]
+            if ($packageId -ne "") {
+                try {
+                    Write-Host "[+] Tentando desinstalar pacote obsoleto: $packageId" -ForegroundColor Yellow
+                    winget uninstall --id $packageId --silent --accept-source-agreements
+                }
+                catch {
+                    Write-Host "[!] Não foi possível remover o pacote: $packageId" -ForegroundColor Red
+                }
             }
         }
     }
+    catch {
+        Write-Host "[!] Erro durante a limpeza de pacotes obsoletos: $_" -ForegroundColor Red
+    }
 
-    Write-Host "[+] Atualização completa concluída!" -ForegroundColor Cyan
+    Write-Host "[+] Atualização completa concluída com sucesso!" -ForegroundColor Cyan
 }
 
 
 
 
+
+
+# ============================================================================ #
+#                        ATIVAR CONFIGURACOES DO SISTEMA                        #
+# ============================================================================ #
+# Registra todas as Scheduled Tasks da pasta Scripts do OneDrive
 
