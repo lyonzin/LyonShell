@@ -1,17 +1,5 @@
 <div align="center">
 
-```
-
-██╗  ██╗   ██╗ ██████╗ ███╗   ██╗███████╗██╗  ██╗███████╗██╗     ██╗
-██║  ╚██╗ ██╔╝██╔═══██╗████╗  ██║██╔════╝██║  ██║██╔════╝██║     ██║
-██║   ╚████╔╝ ██║   ██║██╔██╗ ██║███████╗███████║█████╗  ██║     ██║
-██║    ╚██╔╝  ██║   ██║██║╚██╗██║╚════██║██╔══██║██╔══╝  ██║     ██║
-███████╗██║   ╚██████╔╝██║ ╚████║███████║██║  ██║███████╗███████╗███████╗
-╚══════╝╚═╝    ╚═════╝ ╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝
-
-
-```
-
 **A feature-rich PowerShell profile that transforms your Windows terminal.**
 
 Neofetch-style system info, security toolkit, network utilities, and a hacker-inspired prompt — all in a single drop-in file. No modules, no dependencies, just plug and play.
