@@ -60,11 +60,8 @@ function Show-Menu {
     Write-Host ""
 }
 
-# Exibir o banner automaticamente ao iniciar o PowerShell
-Show-Banner
-
 # Exibir o menu automaticamente ao iniciar o PowerShell
-#Show-Menu
+Show-Menu
 
 # Criar alias para chamar o banner facilmente
 Set-Alias banner Show-Banner
